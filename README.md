@@ -1,51 +1,33 @@
 # Ansible-server-installation-windows
-===============================================
+
 #Prerequisites to make connection between ansible control (Linux) and manage node (Windows)
-> CentOS 7 (Control Node)
-username - centos
+> (Control Node)
+	- Install python3 and ansible
+	- install pyhton3-winrm
+	- Go to /etc/ansible/hosts and define your host name with ip.
+	- For eg-
+	  [windows]
+	  public-ip-address
 
-2.	Window server 2016 SQL server (Managed Node)
- Username – Administrator
-Password - TxD4W-@dU@;ZKiAlq.6sJNt-dB398mMc
-Steps To make connection between Control and manage node. 
-1.	Install Python and ansible on Control node. 
-
-2.	Install pyhton2-winrm on control node. 
-
-$ sudo yum –y install python2-winrm
-
-3.	Go to /etc/ansible/hosts and define your host name with ip.
+	  [winhost:vars]
+	  ansible_user=Administrator
+	  ansible_password=H=TYCIeZFD&1!sW=FiaGA-XvQe(3@$EG
+	  ansible_connection=winrm
+	  ansible_port=5986
+	  ansible_winrm_server_cert_validation=ignore
 
  
+> (Manage Node)
+	- Go to the Manage node (Window server) and create a file with name ConfigureRemotingForAnsible.ps1 and add all the content from the below link to the file –
+	- https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
+	- Next, run PowerShell as the Administrator
+	- Modify the execution rules of the PowerShell scripts to allow the execution of the script using --- Set-ExecutionPolicy RemoteSigned
+	- Execute the script using --- .\ConfigureRemotingForAnsible.ps1
 
-4.	Go to the Manage node (Window server) and create a file with name ConfigureRemotingForAnsible.ps1 and add all the content from the below link to the file –
-https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
-5.	Next, run PowerShell as the Administrator
+#Your Windows Server is now ready for remote management with Ansible.
+> Now, Go to the control node and verify connection has been establish between control and manage node using following command -
 
-6.	Modify the execution rules of the PowerShell scripts to allow the execution of the script.
-
-	Set-ExecutionPolicy RemoteSigned
-
-7.	Execute the script.
-	.\ConfigureRemotingForAnsible.ps1
-
-Your Windows Server is now ready for remote management with Ansible.
-8.	Now, Go to the control node and verify connection has been establish between control and manage node using following command -
-
-$ ansible –m win_ping winhost
+	- ansible –m win_ping winhost
 
 NOTE - If you got timeout error enable the inbound port https-winrm
-Now , make sure that sql.zip file is available with 
-9.	Unzip the zip file and verify all the content
-
- 
-
-10.	Make sure to comment out add the roles path to /etc/ansible/ansible.cfg file 
-
- 
-
-11.	 Now run your main.yml playbook in your playbooks directory and verify your files are copied and executed successfully on window server. 
-   
-
-
 
