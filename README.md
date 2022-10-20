@@ -1,16 +1,17 @@
 # Ansible-server-installation-windows
 
 Prerequisites to make connection between ansible control (Linux) and manage node (Windows)
-(Control Node)
+
+## For Control Node
 
 Install python3 and ansible
 	
 	sudo apt install python3
-	sudo apt-install ansible
+	sudo aptcinstall ansible
 
 Install pywinrm
 
-	sudo install pyhton3-winrm
+	sudo apt install pyhton3-winrm
 
 Go to /etc/ansible/hosts and define your host name with ip.
 
@@ -26,19 +27,21 @@ Go to /etc/ansible/hosts and define your host name with ip.
 	 ansible_winrm_server_cert_validation=ignore
 
  
-(Manage Node)
+## For Manage Node
 
-Go to the Manage node (Window server) and create a file with name ConfigureRemotingForAnsible.ps1 and add all the content from the below link to the file –
+Go to the Manage node (Window server) and create a file with name **ConfigureRemotingForAnsible.ps1** and add all the content from the below link to the file –
 
-https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
-Next, run PowerShell as the Administrator
-Modify the execution rules of the PowerShell scripts to allow the execution of the script using --- Set-ExecutionPolicy RemoteSigned
-Execute the script using --- .\ConfigureRemotingForAnsible.ps1
+> https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
+
+Next, run PowerShell as the **Administrator**
+
+Execute the script using --- **.\ConfigureRemotingForAnsible.ps1**
 
 #Your Windows Server is now ready for remote management with Ansible.
-> Now, Go to the control node and verify connection has been establish between control and manage node using following command -
 
-	- ansible –m win_ping winhost
+ Now, Go to the control node and verify connection has been establish between control and manage node using following command -
+
+		- ansible –m win_ping windows
 
 NOTE - If you got timeout error enable the inbound port https-winrm
 
