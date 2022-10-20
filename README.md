@@ -63,10 +63,9 @@ Now install chocolatey on control node (ubuntu) using following command
 ### Ansible Playbooks to install mysql on window
 
 Create a file with the name **mysql_install.yml** and add following code
-
 	---
 	- hosts: winhost
-  	  gather_facts: true
+	  gather_facts: true
           tasks:
           - name: Install mysql
             win_chocolatey:
