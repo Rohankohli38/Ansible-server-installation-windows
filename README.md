@@ -2,19 +2,19 @@
 
 #Prerequisites to make connection between ansible control (Linux) and manage node (Windows)
 > (Control Node)
-	- Install python3 and ansible
-	- install pyhton3-winrm
-	- Go to /etc/ansible/hosts and define your host name with ip.
-	- For eg-
-	  [windows]
-	  public-ip-address
+	 Install python3 and ansible
+	 install pyhton3-winrm
+	 Go to /etc/ansible/hosts and define your host name with ip.
+	 For eg-
+	 [windows]
+	 public-ip-address
 
-	  [winhost:vars]
-	  ansible_user=Administrator
-	  ansible_password=H=TYCIeZFD&1!sW=FiaGA-XvQe(3@$EG
-	  ansible_connection=winrm
-	  ansible_port=5986
-	  ansible_winrm_server_cert_validation=ignore
+	 [winhost:vars]
+	 ansible_user=Administrator
+	 ansible_password=H=TYCIeZFD&1!sW=FiaGA-XvQe(3@$EG
+	 ansible_connection=winrm
+	 ansible_port=5986
+	 ansible_winrm_server_cert_validation=ignore
 
  
 > (Manage Node)
