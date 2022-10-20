@@ -59,3 +59,37 @@ Now install chocolatey on control node (ubuntu) using following command
 	anisble-galaxy collection install chocolatey.chocolatey
 
 ---
+
+### Ansible Playbooks to install mysql on window
+
+Create a file with the name **mysql_install.yml** and add following code
+
+	---
+	- hosts: winhost
+  	  gather_facts: true
+          tasks:
+          - name: Install mysql
+            win_chocolatey:
+            name: mysql
+      	    version: '8.0.31'
+      	    state: present
+
+Create a file with the name **psql_install.yml** and add follwing code
+
+	---
+	- hosts: winhost
+          gather_facts: true
+          tasks:
+          - name: Install postgresql
+            win_chocolatey:
+            name: postgresql
+            version: '15.0.1'
+            state: present
+
+Now run the playbook using 
+
+	ansible-playbook mysql_install.yml
+
+	ansible-playbook psql_install.yml
+
+### Thanks 
