@@ -7,7 +7,7 @@ Prerequisites to make connection between ansible control (Linux) and manage node
 Install python3 and ansible
 	
 	sudo apt install python3
-	sudo aptcinstall ansible
+	sudo apt install ansible
 
 Install pywinrm
 
@@ -37,11 +37,25 @@ Next, run PowerShell as the **Administrator**
 
 Execute the script using --- **.\ConfigureRemotingForAnsible.ps1**
 
-#Your Windows Server is now ready for remote management with Ansible.
 
- Now, Go to the control node and verify connection has been establish between control and manage node using following command -
+## Your Windows Server is now ready for remote management with Ansible.
 
-		- ansible –m win_ping windows
+Now, Go to the control node and verify connection has been establish between control and manage node using following command -
 
-NOTE - If you got timeout error enable the inbound port https-winrm
+	- ansible windows -m win_ping
 
+***NOTE*** - If you got timeout error enable the inbound port **https-winrm**
+
+---
+
+## To install the application on window server we will use chocolatey that is used to manage application on windows
+
+First install chocolatey on windows using following command on powershell
+
+	Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+Now install chocolatey on control node (ubuntu) using following command 
+
+	anisble-galaxy collection install chocolatey.chocolatey
+
+---
