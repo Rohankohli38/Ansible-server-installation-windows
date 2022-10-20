@@ -1,0 +1,9 @@
+---
+- hosts: winhost
+  gather_facts: true
+  tasks:
+  - name: Install sql-server-2019
+    win_chocolatey:
+      name: sql-server-2019
+      version: '15.0.2000.20210324'
+      state: present
