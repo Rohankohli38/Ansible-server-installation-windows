@@ -1,7 +1,7 @@
 # Ansible-server-installation-windows
-
-##Prerequisites to make connection between ansible control (Linux) and manage node (Windows)
-1.	CentOS 7 (Control Node)
+===============================================
+#Prerequisites to make connection between ansible control (Linux) and manage node (Windows)
+> CentOS 7 (Control Node)
 username - centos
 
 2.	Window server 2016 SQL server (Managed Node)
