@@ -1,0 +1,9 @@
+---
+- hosts: winhost
+  gather_facts: true
+  tasks:
+  - name: Install postgresql
+    win_chocolatey:
+      name: postgresql
+      version: '15.0.1'
+      state: present
