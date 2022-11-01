@@ -66,7 +66,7 @@ Create a file with the name **mysql_install.yml** and add following code
 
 ```
 ---
-- hosts: winhost
+- hosts: windows
   gather_facts: true
   tasks:
   - name: Install mysql
@@ -80,7 +80,7 @@ Create a file with the name **psql_install.yml** and add follwing code
 
 ```
 ---
-- hosts: winhost
+- hosts: windows
   gather_facts: true
   tasks:
   - name: Install postgresql
