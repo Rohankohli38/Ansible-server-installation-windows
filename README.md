@@ -56,7 +56,7 @@ First install chocolatey on windows using following command on powershell
 
 Now install chocolatey on control node (ubuntu) using following command 
 
-	anisble-galaxy collection install chocolatey.chocolatey
+	ansible-galaxy collection install chocolatey.chocolatey
 
 ---
 
