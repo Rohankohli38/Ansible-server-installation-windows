@@ -19,7 +19,7 @@ Go to /etc/ansible/hosts and define your host name with ip.
 	 [windows]
 	 public-ip-address
 
-	 [winhost:vars]
+	 [windows:vars]
 	 ansible_user=Administrator
 	 ansible_password=H=TYCIeZFD&1!sW=FiaGA-XvQe(3@$EG
 	 ansible_connection=winrm
